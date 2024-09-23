@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>Author Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 40px;
+        }
+
+        .author-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            margin: 0 auto;
+            width: 60%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .author-details img {
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .author-details h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .author-details p {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .author-details p span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .author-details p a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .author-details p a:hover {
+            color: #1E7A37;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Author Details</h1>
+
+<div class="author-details">
+    <img src="{{ asset(author.picture) }}" alt="{{ author.name }}" style="width:150px;height:200px;">
+    <h2>{{ author.name }}</h2>
+    <p><span>Email:</span> {{ author.email }}</p>
+    <p><span>Number of Books:</span> {{ author.nbrBooks }}</p>
+</div>
+
+<div class="footer-text">
+    © Author Details Page
+</div>
+
+</body>
+</html>
