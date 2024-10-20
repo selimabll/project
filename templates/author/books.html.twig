@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books by {{ author.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .no-Books {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Books by {{ author.name }}</h1>
+
+{% if Books is defined and Books is not empty %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Reference</th>
+            <th>Page Number</th>
+            <th>Date Published</th>
+        </tr>
+
+        {% for Book in Books %}
+            <tr>
+                <td>{{ Book.title }}</td>
+                <td>{{ Book.ref }}</td>
+                <td>{{ Book.nbrPage }}</td>
+                <td>{{ Book.datepublish }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <div class="no-Books">
+        <h2>No Books found for this author.</h2>
+        <p>It seems that this author has not published any Books yet. Please check back later!</p>
+    </div>
+{% endif %}
+
+</body>
+</html>

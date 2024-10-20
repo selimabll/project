@@ -101,10 +101,9 @@
     <table>
         <tr>
             <th>Author Name</th>
-            <th>Author Picture</th>
-            <th>Details</th>
-            <th>Number of Books</th> <!-- New column for number of books -->
-            <th>Actions</th> <!-- New column for actions -->
+            <th>Email</th> <!-- New column for author email -->
+            <th>Number of Books</th>
+            <th>Actions</th>
         </tr>
 
         {% set total_Books = 0 %}  <!-- Initialize total books counter -->
@@ -115,14 +114,11 @@
                 <!-- Author Name -->
                 <td>{{ author.name|upper }}</td>
 
-                <!-- Author Picture -->
-                <td><img src="{{ asset(author.picture) }}" alt="{{ author.name }}"></td>
-
-                <!-- Author Details -->
-                <td><a href="{{ path('app_crud_Book', { 'id': author.id }) }}">Show Details</a></td>
+                <!-- Author Email -->
+                <td>{{ author.email }}</td> <!-- Display the email -->
 
                 <!-- Number of Books Column -->
-                <td>{{ author.nbrBooks }}</td> <!-- Display the number of books -->
+                <td>{{ author.nbrBooks }}</td>
 
                 <!-- Actions Column -->
                 <td>

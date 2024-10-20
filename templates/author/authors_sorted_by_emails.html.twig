@@ -1,0 +1,53 @@
+{# templates/author/authors_sorted_by_email.html.twig #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authors Sorted by Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Authors Sorted by Email</h1>
+
+{% if authors is defined and authors is not empty %}
+    <table>
+        <tr>
+            <th>Author Name</th>
+            <th>Email</th>
+        </tr>
+
+        {% for author in authors %}
+            <tr>
+                <td>{{ author.name }}</td>
+                <td>{{ author.email }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h2>No authors found.</h2>
+{% endif %}
+</body>
+</html>

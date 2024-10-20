@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3A22 - Search Authors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100px; /* Adjust width as necessary */
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Authors by Number of Books</h1>
+
+    <form action="{{ path('app_search_authors') }}" method="GET">
+        <input type="number" name="minBooks" placeholder="Min Books" required>
+        <input type="number" name="maxBooks" placeholder="Max Books" required>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if authors is defined and authors is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th> <!-- ID column -->
+                    <th>Author Name</th>
+                    <th>Author Email</th>
+                    <th>Number of Books</th> <!-- Number of books column -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                <tr>
+                    <td>{{ author.id }}</td> <!-- Author ID -->
+                    <td>{{ author.name }}</td> <!-- Author Name -->
+                    <td>{{ author.email }}</td> <!-- Author Email -->
+                    <td>{{ author.nbrBooks }}</td> <!-- Number of Books -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No authors found matching the criteria.</h2>
+    {% endif %}
+</body>
+</html>

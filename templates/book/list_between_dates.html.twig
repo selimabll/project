@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books Between Dates</title>
+</head>
+<body>
+    <h1>Books Published Between 2014-01-01 and 2018-12-31</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author Name</th>
+                <th>Category</th>
+                <th>Published Year</th>
+                <th>Date Published</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Book in Book %}
+            <tr>
+                <td>{{ Book.id }}</td>
+                <td>{{ Book.title }}</td>
+                <td>{{ Book.author.name }}</td>
+                <td>{{ Book.category }}</td>
+                <td>{{ Book.published }}</td>
+                <td>{{ Book.datePublish|date('Y-m-d') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
